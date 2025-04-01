@@ -1,14 +1,18 @@
-import { useEffect } from "react"
-import { pingApi } from "./apis/ping";
+import usePing from "./hooks/apis/queries/usePing"
 
 function App() {
+ 
+const {isLoading , data} = usePing();
 
- useEffect(()=>{
-  pingApi();
- },[]);
-
+if(isLoading){
   return (
-    <>Hello</>
+  <>
+     Loading.....
+  </>
+  )
+}
+  return (
+    <>Hello {data.message}</>
   )
 }
 
